@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Portfolio</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        html, body {
+            height: 100%;
+        }
+
+        body {
+            background: #f4f4f4;
+            color: #1a2d17;
+            scroll-behavior: smooth;
+        }
+
+        :root {
+            --dark-green: #1a2d17;
+            --accent: #32cd32;
+            --card: #ffffff;
+            --shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .wrapper {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        .sidebar {
+            width: 320px;
+            background: var(--dark-green);
+            color: #fff;
+            padding: 2rem;
+            position: fixed;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            overflow-y: auto;
+        }
+
+        .sidebar img {
+            display: block;
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin: 0 auto 1rem;
+            border: 3px solid var(--accent);
+        }
+
+        .sidebar h2 {
+            text-align: center;
+            font-size: 1.5rem;
+        }
+
+        .sidebar h3 {
+            text-align: center;
+            font-weight: 400;
+            margin-bottom: 1.5rem;
+        }
+
+        .sidebar .title {
+            margin-top: 1.5rem;
+            font-weight: 700;
+            border-bottom: 2px solid var(--accent);
+            padding-bottom: 0.3rem;
+        }
+
+        .sidebar ul {
+            list-style: none;
+            margin-top: 0.5rem;
+        }
+
+        .sidebar li {
+            font-size: 0.9rem;
+            line-height: 1.5;
+            margin-bottom: 0.4rem;
+        }
+
+        .main {
+            margin-left: 320px;
+            width: calc(100% - 320px);
+        }
+
+        .hero {
+            height: 300px;
+            background: linear-gradient(135deg, var(--accent), var(--dark-green));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            z-index: 2;
+            text-align: center;
+        }
+
+        .shape {
+            position: absolute;
+            border-radius: 50%;
+            background: var(--accent);
+            opacity: 0.25;
+            animation: float 20s infinite ease-in-out;
+        }
+
+        .s1 { width: 90px; height: 90px; top: 20%; left: 10%; }
+        .s2 { width: 120px; height: 120px; top: 50%; left: 80%; }
+        .s3 { width: 70px; height: 70px; top: 70%; left: 40%; }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-30px); }
+        }
+
+        .section {
+            background: var(--card);
+            margin: 2rem;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+        }
+
+        .section h2 {
+            color: var(--dark-green);
+            margin-bottom: 1rem;
+            border-bottom: 2px solid var(--accent);
+            display: inline-block;
+        }
+
+        .section p,
+        .section li {
+            font-size: 1rem;
+            line-height: 1.6;
+            color: #333;
+        }
+
+		.tags{display:flex;flex-wrap:wrap;gap:.7rem;}
+		.tag{
+			padding:.6rem 1.2rem;
+			background:rgba(50,205,50,.1);
+			color:var(--dark-green);
+			border-radius:20px;
+			font-weight:600;
+		}
+		
+        .skills {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 0.5rem;
+        }
+
+        .skills li::before {
+            content: "✔ ";
+            color: var(--accent);
+        }
+
+        .testimonial {
+            background: #f9f9f9;
+            padding: 1.5rem;
+            border-left: 5px solid var(--accent);
+            border-radius: 10px;
+            margin-bottom: 1rem;
+            font-style: italic;
+        }
+
+        .contact-links a {
+            display: inline-block;
+            margin-right: 1rem;
+            margin-top: 0.5rem;
+            color: var(--dark-green);
+            font-weight: 600;
+            text-decoration: none;
+        }
+
+        .contact-links a:hover {
+            color: var(--accent);
+        }
+
+        .contact-form {
+            margin-top: 1rem;
+            display: grid;
+            gap: 1rem;
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            padding: 0.8rem;
+            border-radius: 10px;
+            border: 1px solid #ccc;
+            font-size: 1rem;
+        }
+
+        .contact-form button {
+            width: 200px;
+            padding: 0.8rem;
+            border: none;
+            border-radius: 30px;
+            background: var(--accent);
+            color: #fff;
+            font-weight: 700;
+            cursor: pointer;
+        }
+
+        .contact-form button:hover {
+            opacity: 0.85;
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: 0.8s;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        @media (max-width: 1024px) {
+            .sidebar {
+                position: relative;
+                width: 100%;
+            }
+
+            .main {
+                margin-left: 0;
+                width: 100%;
+            }
+        }
+		
+    </style>
+</head>
+
+<body>
+    <div class="wrapper">
+
+        <aside class="sidebar reveal">
+            <img src="images/ace.jpg" alt="Andrea Claire Pugal">
+            <h2>Andrea Claire Pugal</h2>
+            <h3>Web Developer</h3>
+
+            <div class="title">Profile</div>
+            <ul>
+                <li>📍 Manaoag, Pangasinan</li>
+                <li>📞 0917 974 5260</li>
+                <li>✉️ clairepugal01@gmail.com</li>
+            </ul>
+
+            <div class="title">Education</div>
+            <div class="edu-item">
+				<strong>BS Information Technology</strong>
+				<p>Panpacific University</p>
+				<p>Urdaneta City, Pangasinan 2428</p>
+				<p>(2024 – 2027)</p>
+			</div>
+			
+			<div class="edu-item">
+				<br><strong>BS Civil Engineering (Undergrad)</strong></br>
+				<p>Pangasinan State University</p>
+				<p>Urdaneta City, Pangasinan</p>
+				<p>(2015 – 2023)</p>
+			</div>
+			
+			<div class="edu-item">
+				<br><strong>Elementary & High School</strong></br>
+				<p>Family Child Development School</p>
+				<p>Manaoag, Pangasinan 2430</p>
+				<p>(2005 – 2015)</p>
+			</div>
+
+            <div class="title">Projects</div>
+            <ul>
+                <strong>IZN P2A Website</strong>
+				<p>Promote sustainable tourism & brings PU and international schools together</p>
+				
+                <br><strong>IZN System Application</h5></strong>
+				<p>App for PU’s IZN Office to manage programs, student exchanges, and global partnerships efficiently.</p>
+            </ul>
+        </aside>
+
+        <div class="main">
+
+            <section class="hero" data-parallax>
+                <div class="shape s1"></div>
+                <div class="shape s2"></div>
+                <div class="shape s3"></div>
+                <h1 class="reveal">Digital Portfolio</h1>
+            </section>
+
+            <section class="section reveal">
+                <h2>Overview</h2>
+                <p>
+                    Aspiring Web Developer with a background in Information Technology,
+                    skilled in Python, HTML, CSS, and UI/UX fundamentals.
+                    Passionate about building functional, user-friendly digital solutions.
+                </p>
+            </section>
+
+            <section class="section reveal">
+                <h2>Work Experience</h2>
+                <ul>
+                    <li><strong>Graphics & Layout Designer (Intern)</strong> – Panpacific University</li>
+					<li><strong>CAD Operator & Graphics Artist</strong> – EAP Environmental Consultancy</li>
+					<li><strong>Administrative Assistant</strong> – QualiCARE Marketing</li>
+                </ul>
+            </section>
+
+            <section class="section reveal">
+                <h2>Technical Skills</h2>
+                <div class="tags">
+					<span class="tag">Python</span>
+					<span class="tag">HTML & CSS</span>
+					<span class="tag">UI/UX</span>
+					<span class="tag">GitHub</span>
+					<span class="tag">MySQL</span>
+					<span class="tag">AutoCAD</span>
+					<span class="tag">Microsoft Office</span>
+				</div>
+            </section>
+
+            <section class="section reveal">
+                <h2>Reflections & Learning Journey</h2>
+                <p><strong>Goals:</strong> To grow as a professional web developer and create impactful digital solutions.</p>
+                <p><strong>Challenges:</strong> Balancing technical problem-solving with design usability.</p>
+                <p><strong>Lessons Learned:</strong> Consistency, continuous learning, and user-centered design are key to effective development.</p>
+            </section>
+
+            <section class="section reveal">
+                <h2>Testimonials</h2>
+                <div class="testimonial">
+                    “Highly reliable and can be trusted to complete task on time with minimal supervision.” – Mr. Abel C. Balagbagan, LPT
+                </div>
+                <div class="testimonial">
+                    “A fast learner with strong attention to detail.” – Ms. Armie Q. Valencia
+                </div>
+            </section>
+
+            <section class="section reveal">
+                <h2>Contact & Social Links</h2>
+
+                <div class="contact-links">
+                    <a href="#">LinkedIn</a>
+                    <a href="#">GitHub</a>
+                    <a href="#">Facebook</a>
+                </div>
+
+                <form class="contact-form">
+                    <input type="text" placeholder="Your Name">
+                    <input type="email" placeholder="Your Email">
+                    <textarea rows="4" placeholder="Your Message"></textarea>
+                    <button type="submit">Send Message</button>
+                </form>
+            </section>
+
+        </div>
+    </div>
+
+    <script>
+        const reveals = document.querySelectorAll('.reveal');
+
+        window.addEventListener('scroll', () => {
+            const h = window.innerHeight * 0.85;
+
+            reveals.forEach(r => {
+                if (r.getBoundingClientRect().top < h) {
+                    r.classList.add('active');
+                }
+            });
+        });
+
+        window.addEventListener('scroll', () => {
+            document.querySelectorAll('[data-parallax]').forEach(el => {
+                el.style.transform = `translateY(${window.scrollY * 0.3}px)`;
+            });
+        });
+    </script>
+	
+</body>
+</html>
