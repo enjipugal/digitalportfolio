@@ -147,26 +147,47 @@
             color: #333;
         }
 
-		.tags{display:flex;flex-wrap:wrap;gap:.7rem;}
-		.tag{
-			padding:.6rem 1.2rem;
-			background:rgba(50,205,50,.1);
-			color:var(--dark-green);
-			border-radius:20px;
-			font-weight:600;
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: .7rem;
+        }
+
+        .tag {
+            padding: .6rem 1.2rem;
+            background: rgba(50,205,50,.1);
+            color: var(--dark-green);
+            border-radius: 20px;
+            font-weight: 600;
+        }
+
+		.project-item {
+			display: flex;
+			gap: 20px;
+			margin-bottom: 30px;
+			align-items: center;
+		}
+
+		.project-item img {
+			width: 250px;
+			border-radius: 10px;
+		}
+
+		.project-item h3 {
+			margin-bottom: 8px;
+		}
+
+		@media (max-width: 768px) {
+			.project-item {
+				flex-direction: column;
+				text-align: center;
+			}
+
+			.project-item img {
+				width: 100%;
+			}
 		}
 		
-        .skills {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 0.5rem;
-        }
-
-        .skills li::before {
-            content: "✔ ";
-            color: var(--accent);
-        }
-
         .testimonial {
             background: #f9f9f9;
             padding: 1.5rem;
@@ -190,43 +211,27 @@
         }
 
         .contact-form {
-            margin-top: 1rem;
-            display: grid;
-            gap: 1rem;
+            margin-top: 1.5rem;
         }
 
         .contact-form input,
         .contact-form textarea {
-            padding: 0.8rem;
-            border-radius: 10px;
-            border: 1px solid #ccc;
-            font-size: 1rem;
+            width: 100%;
+            padding: .7rem;
+            margin-bottom: .8rem;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-family: inherit;
         }
 
         .contact-form button {
-            width: 200px;
-            padding: 0.8rem;
-            border: none;
-            border-radius: 30px;
+            padding: .6rem 1.5rem;
             background: var(--accent);
             color: #fff;
-            font-weight: 700;
+            border: none;
+            border-radius: 25px;
+            font-weight: 600;
             cursor: pointer;
-        }
-
-        .contact-form button:hover {
-            opacity: 0.85;
-        }
-
-        .reveal {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: 0.8s;
-        }
-
-        .reveal.active {
-            opacity: 1;
-            transform: translateY(0);
         }
 
         @media (max-width: 1024px) {
@@ -245,148 +250,177 @@
 </head>
 
 <body>
-    <div class="wrapper">
+<div class="wrapper">
 
-        <aside class="sidebar reveal">
-            <img src="images/ace.jpg" alt="Andrea Claire Pugal">
-            <h2>Andrea Claire Pugal</h2>
-            <h3>Web Developer</h3>
+    <aside class="sidebar reveal">
+        <img src="images/ace.png" alt="Andrea Claire Pugal">
+        <h2>Andrea Claire Pugal</h2>
+        <h3>Web Developer</h3>
 
-            <div class="title">Profile</div>
-            <ul>
-                <li>📍 Manaoag, Pangasinan</li>
-                <li>📞 0917 974 5260</li>
-                <li>✉️ clairepugal01@gmail.com</li>
-            </ul>
+        <div class="title">Profile</div>
+        <ul>
+            <li>📍 Manaoag, Pangasinan</li>
+            <li>📞 0917 974 5260</li>
+            <li>✉️ clairepugal01@gmail.com</li>
+        </ul>
 
-            <div class="title">Education</div>
-            <div class="edu-item">
-				<strong>BS Information Technology</strong>
-				<p>Panpacific University</p>
-				<p>Urdaneta City, Pangasinan 2428</p>
-				<p>(2024 – 2027)</p>
-			</div>
-			
-			<div class="edu-item">
-				<br><strong>BS Civil Engineering (Undergrad)</strong></br>
-				<p>Pangasinan State University</p>
-				<p>Urdaneta City, Pangasinan</p>
-				<p>(2015 – 2023)</p>
-			</div>
-			
-			<div class="edu-item">
-				<br><strong>Elementary & High School</strong></br>
-				<p>Family Child Development School</p>
-				<p>Manaoag, Pangasinan 2430</p>
-				<p>(2005 – 2015)</p>
-			</div>
-
-            <div class="title">Projects</div>
-            <ul>
-                <strong>IZN P2A Website</strong>
-				<p>Promote sustainable tourism & brings PU and international schools together</p>
-				
-                <br><strong>IZN System Application</h5></strong>
-				<p>App for PU’s IZN Office to manage programs, student exchanges, and global partnerships efficiently.</p>
-            </ul>
-        </aside>
-
-        <div class="main">
-
-            <section class="hero" data-parallax>
-                <div class="shape s1"></div>
-                <div class="shape s2"></div>
-                <div class="shape s3"></div>
-                <h1 class="reveal">Digital Portfolio</h1>
-            </section>
-
-            <section class="section reveal">
-                <h2>Overview</h2>
-                <p>
-                    Aspiring Web Developer with a background in Information Technology,
-                    skilled in Python, HTML, CSS, and UI/UX fundamentals.
-                    Passionate about building functional, user-friendly digital solutions.
-                </p>
-            </section>
-
-            <section class="section reveal">
-                <h2>Work Experience</h2>
-                <ul>
-                    <li><strong>Graphics & Layout Designer (Intern)</strong> – Panpacific University</li>
-					<li><strong>CAD Operator & Graphics Artist</strong> – EAP Environmental Consultancy</li>
-					<li><strong>Administrative Assistant</strong> – QualiCARE Marketing</li>
-                </ul>
-            </section>
-
-            <section class="section reveal">
-                <h2>Technical Skills</h2>
-                <div class="tags">
-					<span class="tag">Python</span>
-					<span class="tag">HTML & CSS</span>
-					<span class="tag">UI/UX</span>
-					<span class="tag">GitHub</span>
-					<span class="tag">MySQL</span>
-					<span class="tag">AutoCAD</span>
-					<span class="tag">Microsoft Office</span>
-				</div>
-            </section>
-
-            <section class="section reveal">
-                <h2>Reflections & Learning Journey</h2>
-                <p><strong>Goals:</strong> To grow as a professional web developer and create impactful digital solutions.</p>
-                <p><strong>Challenges:</strong> Balancing technical problem-solving with design usability.</p>
-                <p><strong>Lessons Learned:</strong> Consistency, continuous learning, and user-centered design are key to effective development.</p>
-            </section>
-
-            <section class="section reveal">
-                <h2>Testimonials</h2>
-                <div class="testimonial">
-                    “Highly reliable and can be trusted to complete task on time with minimal supervision.” – Mr. Abel C. Balagbagan, LPT
-                </div>
-                <div class="testimonial">
-                    “A fast learner with strong attention to detail.” – Ms. Armie Q. Valencia
-                </div>
-            </section>
-
-            <section class="section reveal">
-                <h2>Contact & Social Links</h2>
-
-                <div class="contact-links">
-                    <a href="#">LinkedIn</a>
-                    <a href="#">GitHub</a>
-                    <a href="#">Facebook</a>
-                </div>
-
-                <form class="contact-form">
-                    <input type="text" placeholder="Your Name">
-                    <input type="email" placeholder="Your Email">
-                    <textarea rows="4" placeholder="Your Message"></textarea>
-                    <button type="submit">Send Message</button>
-                </form>
-            </section>
-
+        <div class="title">Education</div>
+        <div class="edu-item">
+            <strong>BS Information Technology</strong>
+            <p>Panpacific University</p>
+            <p>Urdaneta City, Pangasinan 2428</p>
+            <p>(2024 – 2027)</p>
         </div>
+
+        <div class="edu-item">
+            <br><strong>BS Civil Engineering (Undergrad)</strong>
+            <p>Pangasinan State University</p>
+            <p>Urdaneta City, Pangasinan 2428</p>
+            <p>(2015 – 2023)</p>
+        </div>
+
+        <div class="edu-item">
+            <br><strong>Elementary & High School</strong>
+            <p>Family Child Development School</p>
+            <p>Manaoag, Pangasinan 2430</p>
+			<p>(2011 - 2015)</p>
+            <p>(2005 – 2011)</p>
+        </div>
+
+        <div class="title">Resume</div>
+        <a href="pugal_resume.pdf" target="_blank" style="display:inline-block;margin-top:.6rem;padding:.6rem 1.2rem;background:var(--accent);color:#fff;text-decoration:none;border-radius:25px;font-weight:600;">
+			Download Resume
+		</a>
+
+    </aside>
+
+    <div class="main">
+
+        <section class="hero">
+            <div class="shape s1"></div>
+            <div class="shape s2"></div>
+            <div class="shape s3"></div>
+            <h1>Digital Portfolio</h1>
+        </section>
+
+        <section class="section">
+            <h2>Overview</h2>
+            <p>
+                Aspiring Web Developer with a background in Information Technology,
+                skilled in Python, HTML, CSS, and UI/UX fundamentals.
+                Passionate about building functional, user-friendly digital solutions.
+            </p>
+        </section>
+
+        <section class="section">
+            <h2>Work Experience</h2>
+            <ul>
+                <li><strong>Graphics & Layout Designer (Intern)</strong>
+				<p>Panpacific University</p>
+				<p>San Vicente, Urdaneta City, Pangasinan</p>
+				
+                <br><li><strong>CAD Operator & Graphics Artist</strong></br>
+				<p>EAP Environmental Consultancy</p>
+				<p>2nd Flr, OLM Bldg, Amadeo Perez Jr.</p>
+				<p>Poblacion, Urdaneta City, Pangasinan</p>
+				
+                <br><li><strong>Administrative Assistant</strong></br>
+				<p>QualiCARE Marketing</p>
+				<p>Poblacion, Manaoag, Pangasinan</p>
+            </ul>
+        </section>
+
+        <section class="section">
+            <h2>Technical Skills</h2>
+            <div class="tags">
+                <span class="tag">Python</span>
+                <span class="tag">HTML & CSS</span>
+                <span class="tag">UI/UX</span>
+                <span class="tag">GitHub</span>
+                <span class="tag">MySQL</span>
+                <span class="tag">AutoCAD</span>
+                <span class="tag">Microsoft Office</span>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>Projects</h2>
+
+			<div class="project-item">
+				<img src="images/izn-p2a.png" alt="Project 1">
+			<div>
+            
+			<h3>IZN P2A Website</h3>
+            <p>Promote sustainable tourism & brings PU and international schools together.</p>
+			</div>
+		</div>
+
+			<div class="project-item">
+				<img src="images/izn-app.png" alt="Project 2">
+			<div>
+			
+            <h3>IZN System Application (ongoing)</h3>
+            <p>App for PU’s IZN Office to manage programs, student exchanges, and global partnerships efficiently.</p>
+			</div>
+		</div>
+		</section>
+
+        <section class="section">
+            <h2>Reflections & Learning Journey</h2>
+            <p><strong>Goals:</strong> To grow as a professional web developer and create impactful digital solutions.</p>
+            <p><strong>Challenges:</strong> Balancing technical problem-solving with design usability.</p>
+            <p><strong>Lessons Learned:</strong> Consistency, continuous learning, and user-centered design are key to effective development.</p>
+        </section>
+
+        <section class="section">
+            <h2>Testimonials</h2>
+            <div class="testimonial">
+                “Highly reliable and can be trusted to complete task on time with minimal supervision.” – Mr. Abel C. Balagbagan, LPT
+            </div>
+            <div class="testimonial">
+                “A fast learner with strong attention to detail.” – Ms. Armie Q. Valencia
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>Contact & Social Links</h2>
+
+            <div class="contact-links">
+                <a href="#">LinkedIn</a>
+                <a href="#">GitHub</a>
+                <a href="#">Facebook</a>
+            </div>
+
+            <form class="contact-form">
+				<input type="text" placeholder="Your Name">
+				<input type="email" placeholder="Your Email">
+				<textarea rows="4" placeholder="Your Message"></textarea>
+				<button type="submit">Send Message</button>
+			</form>
+        </section>
+
     </div>
+</div>
 
-    <script>
-        const reveals = document.querySelectorAll('.reveal');
-
-        window.addEventListener('scroll', () => {
-            const h = window.innerHeight * 0.85;
-
-            reveals.forEach(r => {
-                if (r.getBoundingClientRect().top < h) {
-                    r.classList.add('active');
-                }
-            });
-        });
-
-        window.addEventListener('scroll', () => {
-            document.querySelectorAll('[data-parallax]').forEach(el => {
-                el.style.transform = `translateY(${window.scrollY * 0.3}px)`;
-            });
-        });
-    </script>
+<script>
+	const reveals = document.querySelectorAll('reveal');
 	
+	window.addEventListener('scroll',() => {
+		const h = window.innerHeight * 0.85;
+		
+		reveals.forEach(r => {
+			if (r.getBoundingClientRect().top <h) {
+				r.classList.add('active');
+			}
+		});
+	});
+	
+	window.addEventListener('scroll' ,() => {
+		document.querySelectorAll('[data-parallax]').forEach(el => {
+		el.style.transform = translateY(${window.scrollY * 0.3]px);
+		});
+	});
+</script>
+
 </body>
 </html>
